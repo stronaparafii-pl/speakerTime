@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Czas mówcy</title>
+
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1, maximum-scale=2, user-scalable=no"/>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <meta name="theme-color" content="#4284f3">
+
+    <link rel="icon" href="img/icon.png">
+
+    <style type="text/css">
+
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+        }
+
+        header {
+            background-color: #4284f3;
+            /*border-bottom: 1px solid #666;*/
+        }
+
+        header h3 {
+            color: #fff;
+            height: 7vh;
+            margin: 0 auto;
+            font-size: 5vh;
+            font-weight: bold;
+            padding: 0vh 3vw;
+            text-align: center;
+        }
+
+        header h3 img {
+            height: 5vh;
+            vertical-align: middle;
+            margin-right: 1vw;
+        }
+
+        footer {
+            background-color: #4284f3;
+            /*border-bottom: 1px solid #666;*/
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 1vh 0;
+            position: fixed;
+            bottom: 0;
+            width: 100vw;
+            height: 5vh;
+        }
+
+        footer > span {
+            font-size: 0.8em;
+        }
+
+        #settings {
+            width: 100vw;
+            vertical-align: middle;
+            line-height: 5vh;
+        }
+
+        #settings > .counter {
+            font-size: 3vh;
+            font-weight: bold;
+            color: #fff;
+            margin: 2vh 1vw;
+            height: 10vh;
+        }
+
+        #settings > .counter > .title {
+            background-color: #4284f3;
+            text-align: center;
+            height: 5vh;
+            border-top-left-radius: 1vw;
+            border-top-right-radius: 1vw;
+        }
+
+        #settings > .counter > .buttons {
+            height: 5vh;
+            position: relative;
+        }
+
+        #settings > .counter > .buttons > * {
+            height: 5vh;
+            display: inline-block;
+        }
+
+        #settings > .counter > .buttons > *:focus {
+            outline: none;
+        }
+
+        #settings > .counter > .buttons > .lessBtn {
+            background-color: #4284f3;
+            width: 10vh;
+            text-align: center;
+            border-bottom-left-radius: 1vw;
+        }
+
+        #settings > .counter > .buttons > .value {
+            font-weight: normal;
+            width: 92vw;
+            text-align: center;
+            color: #4284f3;
+            border-bottom: 1px solid #4284f3;
+            position: absolute;
+            left: 3vw;
+            top: -1px;
+            z-index: -1;
+        }
+
+        #settings > .counter > .buttons > .moreBtn {
+            background-color: #4284f3;
+            width: 10vh;
+            position: absolute;
+            right: 0;
+            top: 0;
+            text-align: center;
+            border-bottom-right-radius: 1vw;
+
+        }
+
+        #settings > .button, #counter > .button {
+            font-size: 3vh;
+            font-weight: bold;
+            color: #fff;
+            margin: 2vh 1vw;
+
+            background-color: #4284f3;
+            text-align: center;
+            height: 5vh;
+            border-radius: 1vw;
+        }
+
+        #settings > .button:hover, #counter > .button:hover {
+            cursor: pointer;
+        }
+
+        #settings > .button:focus, #counter > .button:focus {
+            border: 2px solid #4a9e43;
+        }
+
+        #counter {
+            width: 100vw;
+            vertical-align: middle;
+            line-height: 5vh;
+            display: none;
+        }
+
+        #counter > .display {
+            font-size: 3vh;
+            font-weight: bold;
+            color: #fff;
+            margin: 2vh 1vw;
+            height: 10vh;
+        }
+
+        #counter > .display > .title {
+            background-color: #99bfff;
+            text-align: center;
+            height: 5vh;
+            border-top-left-radius: 1vw;
+            border-top-right-radius: 1vw;
+        }
+
+        #counter > .display > .value {
+            background-color: #fff;
+            border: 1px solid #99bfff;
+            color: #99bfff;
+            text-align: center;
+            height: 5vh;
+            border-bottom-left-radius: 1vw;
+            border-bottom-right-radius: 1vw;
+        }
+
+        #counter > #personTimeToEnd > .title {
+            background-color: #4a9e43;
+        }
+
+        #counter > #personTimeToEnd > .value {
+            background-color: #fff;
+            border: 1px solid #4a9e43;
+            color: #4a9e43;
+        }
+
+        #reset {
+            position: fixed;
+            bottom: 6vh;
+            width: 98vw;
+        }
+    </style>
+
+    <link rel="manifest" href="./manifest.json">
+
+    <meta name="description" content="Czas mówcy">
+
+    <meta name="author" content="Wojciech Banaś"/>
+
+</head>
+
+<body>
+
+<header>
+    <h3>
+        <img src="img/icon-raw.svg" alt="icon"> Czas mówcy
+    </h3>
+</header>
+
+<div id="box">
+
+    <div id="settings">
+
+        <div class="counter" id="people">
+            <div class="title">Osób</div>
+            <div class="buttons">
+                <a class="lessBtn button" data-type="sets" tabindex="0">-</a>
+                <span class="value">10</span>
+                <a class="moreBtn button" data-type="sets" tabindex="0">+</a>
+            </div>
+        </div>
+
+        <div class="counter" id="time">
+            <div class="title">Czas spotkania [min]</div>
+            <div class="buttons">
+                <a class="lessBtn button" tabindex="0">-</a>
+                <span class="value">5</span>
+                <a class="moreBtn button" tabindex="0">+</a>
+            </div>
+        </div>
+
+        <div class="button" id="play">Uruchom</div>
+
+    </div>
+
+    <div id="counter">
+        <div id="personNr" class="display">
+            <div class="title">Osoba</div>
+            <div class="value"></div>
+        </div>
+        <div id="personTimeToEnd" class="display">
+            <div class="title">Twój czas</div>
+            <div class="value"></div>
+        </div>
+        <div id="timeToEnd" class="display">
+            <div class="title">Pozostały czas</div>
+            <div class="value"></div>
+        </div>
+        <div id="otherPersonTimeToEnd" class="display">
+            <div class="title">Pozostały czas na osobę</div>
+            <div class="value"></div>
+        </div>
+        <div class="button" id="nextPerson">Następna osoba</div>
+        <div class="button" id="pause">Zatrzymaj</div>
+        <div class="button" id="reset">Wyłącz</div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2019 Fundacja "Strona Parafii"<br>
+    <span>Developed by Wojciech Banaś, Wersja: v0.3.0</span>
+</footer>
+
+<script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+
+</body>
+</html>
