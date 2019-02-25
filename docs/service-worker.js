@@ -2,17 +2,33 @@ var cacheName = 'speakerTime-v0.4.3';
 
 var filesToCache = [
     './',
-    './index.html',
-    './js/main.js',
-    './img/icon.png',
-    './img/icon-raw.svg',
+    './apple-touch-icon.png',
+    './browserconfig.xml',
+    './css',
+    './css/main.css',
+    './favicon-16x16.png',
+    './favicon-32x32.png',
+    './favicon.ico',
+    './img',
     './img/icon-128x128.png',
     './img/icon-144x144.png',
     './img/icon-192x192.png',
     './img/icon-48x48.png',
     './img/icon-512x512.png',
     './img/icon-96x96.png',
-    './manifest.json'
+    './img/icon.png',
+    './img/icon-raw.svg',
+    './img/icon.svg',
+    './index.html',
+    './js',
+    './js/main.js',
+    './manifest.json',
+    './mstile-144x144.png',
+    './mstile-150x150.png',
+    './mstile-310x150.png',
+    './mstile-310x310.png',
+    './mstile-70x70.png',
+    './safari-pinned-tab.svg',
 ];
 
 
