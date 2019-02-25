@@ -39,6 +39,8 @@
 
         header {
             background-color: #4284f3;
+            height: 9vh;
+            position: relative;
         }
 
         header h3 {
@@ -55,6 +57,14 @@
             height: 5vh;
             vertical-align: middle;
             margin-right: 1vw;
+        }
+
+        header .version {
+            position: absolute;
+            right: 1vw;
+            bottom: 0.5vh;
+            font-size: 1.5vh;
+            color: #fff;
         }
 
         footer {
@@ -199,7 +209,7 @@
             font-size: 0.8em;
         }
 
-        #counter > #personTimeToEnd  {
+        #counter > #personTimeToEnd {
             height: 13vh;
         }
 
@@ -237,6 +247,7 @@
     <h3>
         <img src="img/icon-raw.svg" alt="icon"> Czas mówcy
     </h3>
+    <span class="version">v0.4.0</span>
 </header>
 
 <div id="box">

@@ -55,6 +55,7 @@ var app = {
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
                 console.log('Service worker registration succeeded:', registration);
+                registration.update();
             }, /*catch*/ function (error) {
                 console.log('Service worker registration failed:', error);
                 console.log(error);
