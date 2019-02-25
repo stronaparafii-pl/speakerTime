@@ -71,8 +71,10 @@ var app = {
         moreBtn = counterElement.getElementsByClassName('moreBtn')[0];
         valueEl = counterElement.getElementsByClassName('value')[0];
 
+        if (localStorage[counterElement.id] !== undefined) {
+            valueEl.innerText = localStorage[counterElement.id];
+        }
         app.counterData[counterElement.id] = parseInt(valueEl.innerText);
-
 
         lessBtn.addEventListener('click', app.lessValue);
         lessBtn.addEventListener('mousedown', app.lessValueCont);
@@ -179,6 +181,8 @@ var app = {
             app.counterData[counterElement.id] = app.counterData[counterElement.id] - 1;
             valueEl.innerText = app.counterData[counterElement.id];
         }
+
+        localStorage[counterElement.id] = app.counterData[counterElement.id];
     },
 
     lessValueCont: function (type) {
@@ -212,6 +216,8 @@ var app = {
             app.counterData[counterElement.id] = app.counterData[counterElement.id] + 1;
             valueEl.innerText = app.counterData[counterElement.id];
         }
+
+        localStorage[counterElement.id] = app.counterData[counterElement.id];
     },
 
 
