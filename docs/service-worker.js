@@ -1,7 +1,7 @@
 var cacheName = 'speakerTime-v0.4.5';
 
 var filesToCache = [
-    './'
+    './',
     './apple-touch-icon.png',
     './browserconfig.xml',
     './css/main.css',
