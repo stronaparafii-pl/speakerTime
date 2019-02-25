@@ -1,4 +1,4 @@
-var cacheName = 'speakerTime-v0.3.3';
+var cacheName = 'speakerTime-v0.4.0';
 
 var filesToCache = [
     './',
