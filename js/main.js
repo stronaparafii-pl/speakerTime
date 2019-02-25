@@ -164,7 +164,7 @@ var app = {
 
     },
 
-    lessValue: function (type) {
+    changeValue: function (type, valueToAdd) {
         // type instanceof MouseEvent
         if (typeof type === "object") {
             counterElement = type.srcElement.parentElement.parentElement;
@@ -178,20 +178,18 @@ var app = {
             app.counterData[counterElement.id] = parseInt(valueEl.innerText);
 
         } else {
-            app.counterData[counterElement.id] = app.counterData[counterElement.id] - 1;
+            app.counterData[counterElement.id] = app.counterData[counterElement.id] + valueToAdd;
             valueEl.innerText = app.counterData[counterElement.id];
         }
 
         localStorage[counterElement.id] = app.counterData[counterElement.id];
     },
 
-    lessValueCont: function (type) {
-        if (typeof type === "object") {
-            let counterElementCount = type.srcElement.parentElement.parentElement;
-        } else {
-            console.log(type);
-        }
+    lessValue: function (type) {
+        app.changeValue(type, -1);
+    },
 
+    lessValueCont: function (type) {
         app.intervalButton = setInterval(function () {
             app.lessValue(type)
         }, 250);
@@ -202,32 +200,10 @@ var app = {
     },
 
     moreValue: function (type) {
-        if (typeof type === "object") {
-            counterElement = type.srcElement.parentElement.parentElement;
-        } else {
-            console.log(type);
-        }
-
-        const valueEl = counterElement.getElementsByClassName('value')[0];
-
-        if (app.counterData[counterElement.id] === undefined) {
-            app.counterData[counterElement.id] = parseInt(valueEl.innerText);
-        } else {
-            app.counterData[counterElement.id] = app.counterData[counterElement.id] + 1;
-            valueEl.innerText = app.counterData[counterElement.id];
-        }
-
-        localStorage[counterElement.id] = app.counterData[counterElement.id];
+        app.changeValue(type, 1);
     },
 
-
     moreValueCont: function (type) {
-        if (typeof type === "object") {
-            let counterElementCount = type.srcElement.parentElement.parentElement;
-        } else {
-            console.log(type);
-        }
-
         app.intervalButton = setInterval(function () {
             app.moreValue(type)
         }, 250);
