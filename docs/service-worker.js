@@ -1,15 +1,13 @@
 var cacheName = 'speakerTime-v0.4.4';
 
 var filesToCache = [
-    './',
+    './'
     './apple-touch-icon.png',
     './browserconfig.xml',
-    './css',
     './css/main.css',
     './favicon-16x16.png',
     './favicon-32x32.png',
     './favicon.ico',
-    './img',
     './img/icon-128x128.png',
     './img/icon-144x144.png',
     './img/icon-192x192.png',
@@ -20,7 +18,6 @@ var filesToCache = [
     './img/icon-raw.svg',
     './img/icon.svg',
     './index.html',
-    './js',
     './js/main.js',
     './manifest.json',
     './mstile-144x144.png',
