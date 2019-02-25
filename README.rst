@@ -24,6 +24,7 @@ Wymagania
 #########
 
 Przeglądarka jedna z:
+
 * Google Chrome
 * Firefox
 * Opera
