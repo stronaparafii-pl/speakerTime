@@ -40,7 +40,8 @@ self.addEventListener('activate', function (event) {
     event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
-                if (key !== cacheName && key !== dataCacheName) {
+                console.log('[ServiceWorker] Check old cache', key);
+                if (key !== cacheName) {
                     console.log('[ServiceWorker] Removing old cache', key);
                     return caches.delete(key);
                 }
@@ -50,6 +51,7 @@ self.addEventListener('activate', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
+    console.log('[ServiceWorker] Fetch');
     event.respondWith(
         fetch(event.request).catch(function () {
             console.log(event.request);
