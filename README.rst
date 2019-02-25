@@ -7,6 +7,8 @@ Mały program ułatwiający podział dostępnego czasu pomiędzy osobami.
 Pomaga, wtedy gdy mamy spotkanie ze ściśle wyznaczonym czasem spotkania,
 w którym ma wystąpić kilku mówców.
 
+Aplikacja online: https://czas-mowcy-app.stronaparafii.pl/
+
 Zasada działania
 ################
 
