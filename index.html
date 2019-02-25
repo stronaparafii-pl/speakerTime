@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Czas mówcy</title>
+    <meta name="version" content="0.3.2">
 
     <meta name="viewport"
           content="width=device-width, height=device-height, initial-scale=1, maximum-scale=2, user-scalable=no"/>
@@ -10,6 +11,10 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
     <meta name="theme-color" content="#4284f3">
+
+    <meta name='copyright' content='Strona Parafii'>
+    <meta name='robots' content='index,follow'>
+    <meta name='author' content='Wojciech Banaś'>
 
     <link rel="icon" href="img/icon.png">
 
@@ -34,7 +39,6 @@
 
         header {
             background-color: #4284f3;
-            /*border-bottom: 1px solid #666;*/
         }
 
         header h3 {
@@ -43,7 +47,7 @@
             margin: 0 auto;
             font-size: 5vh;
             font-weight: bold;
-            padding: 0vh 3vw;
+            padding: 1vh 3vw;
             text-align: center;
         }
 
@@ -63,11 +67,9 @@
             position: fixed;
             bottom: 0;
             width: 100vw;
-            height: 5vh;
-        }
-
-        footer > span {
-            font-size: 0.8em;
+            height: 3vh;
+            font-size: 2vh;
+            line-height: 3vh;
         }
 
         #settings {
@@ -189,6 +191,18 @@
             border-bottom-right-radius: 1vw;
         }
 
+        #counter > .display > .value > .negative {
+            color: #ff4e4e;
+        }
+
+        #counter > .display > .value .seconds {
+            font-size: 0.8em;
+        }
+
+        #counter > #personTimeToEnd  {
+            height: 13vh;
+        }
+
         #counter > #personTimeToEnd > .title {
             background-color: #4a9e43;
         }
@@ -197,6 +211,9 @@
             background-color: #fff;
             border: 1px solid #4a9e43;
             color: #4a9e43;
+            font-size: 6vh;
+            height: 8vh;
+            line-height: 8vh;
         }
 
         #reset {
@@ -249,20 +266,20 @@
     </div>
 
     <div id="counter">
-        <div id="personNr" class="display">
-            <div class="title">Osoba</div>
-            <div class="value"></div>
-        </div>
         <div id="personTimeToEnd" class="display">
             <div class="title">Twój czas</div>
             <div class="value"></div>
         </div>
+        <div id="personNr" class="display">
+            <div class="title">Osoba</div>
+            <div class="value"></div>
+        </div>
         <div id="timeToEnd" class="display">
-            <div class="title">Pozostały czas</div>
+            <div class="title">Pozostały czas spotkania</div>
             <div class="value"></div>
         </div>
         <div id="otherPersonTimeToEnd" class="display">
-            <div class="title">Pozostały czas na osobę</div>
+            <div class="title">Czas na następną osobę</div>
             <div class="value"></div>
         </div>
         <div class="button" id="nextPerson">Następna osoba</div>
@@ -275,7 +292,6 @@
 
 <footer>
     © 2019 Fundacja "Strona Parafii"<br>
-    <span>Developed by Wojciech Banaś, Wersja: v0.3.2</span>
 </footer>
 
 <script type="text/javascript" charset="utf-8" src="js/main.js"></script>

@@ -2,23 +2,30 @@ document.addEventListener('DOMContentLoaded', function () {
     app.init();
 });
 
+function pad(num, size) {
+    let s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
 function secondsToDate(seconds) {
+
+    let negative = false;
+
+    if (seconds < 0) {
+        seconds *= -1;
+        negative = true;
+    }
 
     const hours = Math.trunc(seconds / (3600));
     const minutes = Math.trunc((seconds % 3600) / 60);
     const sec = Math.trunc((seconds % 3600) % 60);
 
-    if (hours == 0) {
-        if (minutes == 0) {
-            return sec + ' sek.';
-        } else {
-            return minutes + ' min. ' + sec + ' sek.';
-        }
+    if (negative) {
+        return '<span class="negative">- ' + pad(hours, 2) + ':' + pad(minutes, 2) + '.<self class="seconds">' + pad(sec, 2) + '</self></span>';
     } else {
-        return hours + ' godz. ' + minutes + ' min. ' + sec + ' sek.';
+        return pad(hours, 2) + ':' + pad(minutes, 2) + '.<self class="seconds">' + pad(sec, 2) + '</self>';
     }
-
-    return hours + ' godz. ' + minutes + ' min. ' + sec + ' sek.' + seconds;
 }
 
 var app = {
@@ -116,10 +123,15 @@ var app = {
                 counterValue -= 1;
                 counterPersonValue -= 1;
 
-                personTimeToEndElement.innerText = secondsToDate(counterPersonValue);
-                timeToEndElement.innerText = secondsToDate(counterValue);
-                otherPersonTimeToEndElement.innerText = secondsToDate((counterValue + counterPersonValue) / counterPersons);
-                personNrElement.innerHTML = (app.counterData['people'] - counterPersons + 1) + ' z ' + app.counterData['people'];
+                personTimeToEndElement.innerHTML = secondsToDate(counterPersonValue);
+                timeToEndElement.innerHTML = secondsToDate(counterValue);
+                if ((counterPersons - 1) <= 0) {
+                    otherPersonTimeToEndElement.innerHTML = 'Niedostępny';
+                } else {
+                    otherPersonTimeToEndElement.innerHTML = secondsToDate((counterValue) / (counterPersons - 1));
+                }
+
+                personNrElement.innerText = (app.counterData['people'] - counterPersons + 1) + ' / ' + app.counterData['people'];
             }
         }, 1000)
     },
