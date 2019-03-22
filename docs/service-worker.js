@@ -27,6 +27,9 @@ var filesToCache = [
     './mstile-310x310.png',
     './mstile-70x70.png',
     './safari-pinned-tab.svg',
+    './sounds/applause.ogg',
+    './sounds/dingdingding.ogg',
+    './sounds/ticktock.ogg',
 ];
 
 

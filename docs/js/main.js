@@ -39,15 +39,14 @@ var app = {
     interval: null,
     counterPaused: false,
     counterValue: 0,
-    noSleep: undefined,
+    noSleep: new NoSleep(),
+    audio: new Audio(),
 
     init: function () {
         app.play.addEventListener('click', app.playCounter);
         app.reset.addEventListener('click', app.resetCounter);
         app.pause.addEventListener('click', app.pauseCounter);
         app.nextPerson.addEventListener('click', app.removePerson);
-
-        app.noSleep = new NoSleep();
 
         counterElements = document.querySelectorAll('#settings > .counter');
         for (i = 0, len = counterElements.length; i < len; i++) {
@@ -132,6 +131,16 @@ var app = {
 
                 personTimeToEndElement.innerHTML = secondsToDate(counterPersonValue);
                 timeToEndElement.innerHTML = secondsToDate(counterValue);
+
+                if (counterPersonValue === 13) {
+                    app.playSound('ticktock');
+                } else if (counterPersonValue === 3) {
+                    app.playSound('applause');
+                } else if (counterPersonValue < 0 && (counterPersonValue % 5) === -4) {
+                    /* play the sound every 5 seconds */
+                    app.playSound('dingdingding');
+                }
+
                 if ((counterPersons - 1) <= 0) {
                     otherPersonTimeToEndElement.innerHTML = 'Niedostępny';
                 } else {
@@ -219,4 +228,8 @@ var app = {
         clearInterval(app.intervalButton);
     },
 
+    playSound: function (soundFileName) {
+        app.audio.src = "./sounds/" + soundFileName + ".ogg";
+        app.audio.play();
+    },
 };
