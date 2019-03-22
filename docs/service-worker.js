@@ -19,6 +19,7 @@ var filesToCache = [
     './img/icon.svg',
     './index.html',
     './js/main.js',
+    './js/NoSleep.min.js',
     './manifest.json',
     './mstile-144x144.png',
     './mstile-150x150.png',

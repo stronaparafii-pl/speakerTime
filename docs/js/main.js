@@ -39,13 +39,15 @@ var app = {
     interval: null,
     counterPaused: false,
     counterValue: 0,
-
+    noSleep: undefined,
 
     init: function () {
         app.play.addEventListener('click', app.playCounter);
         app.reset.addEventListener('click', app.resetCounter);
         app.pause.addEventListener('click', app.pauseCounter);
         app.nextPerson.addEventListener('click', app.removePerson);
+
+        app.noSleep = new NoSleep();
 
         counterElements = document.querySelectorAll('#settings > .counter');
         for (i = 0, len = counterElements.length; i < len; i++) {
@@ -112,6 +114,8 @@ var app = {
         app.counterPaused = false;
         app.pause.innerText = 'Zatrzymaj';
 
+        app.noSleep.enable();
+
         app.interval = setInterval(function () {
             if (app.doPersonRemove) {
                 if (counterPersons > 1) {
@@ -146,6 +150,7 @@ var app = {
         counterElement.style = '';
         clearInterval(app.interval);
         app.counterPaused = false;
+        app.noSleep.disable();
     },
 
     removePerson: function () {
